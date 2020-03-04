@@ -17,6 +17,8 @@ public class Introduction {
         System.out.println("Результат решения выражения a * (b + (c / d)) = " + Result(2,3,5,4));
         System.out.println("Сумма данных двух чисел в пределах от 10 до 20? Ответ: " + Range(7,13));
         PosNeg(-3);
+        Str("Sergey");
+
     }
 
     //Задание 1
@@ -28,19 +30,22 @@ public class Introduction {
     }
 
     //Задание 2
-    public static boolean Range (int a, int b){
-        int res = a + b;
+    public static boolean Range (int one, int two){
+        int res = one + two;
         if (res>=10 && res<=20) return true;
         else return false;
     }
 
     //Задание 3
-    public static void PosNeg(int a){
-        if (a>=0) {
-            System.out.println("Число " + a + " является положительным");
+    public static void PosNeg(int num){
+        if (num>=0) {
+            System.out.println("Число " + num + " является положительным");
         }
-        else System.out.println("Число " + a + " является отрицательным");
+        else System.out.println("Число " + num + " является отрицательным");
     }
 
-
+    //Задание 4
+    public static void Str(String h_name){
+        System.out.println("Привет, " + h_name);
+    }
 }
