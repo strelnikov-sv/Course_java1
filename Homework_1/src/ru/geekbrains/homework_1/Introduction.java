@@ -18,7 +18,7 @@ public class Introduction {
         System.out.println("Сумма данных двух чисел в пределах от 10 до 20? Ответ: " + Range(7,13));
         PosNeg(-3);
         Str("Sergey");
-
+        Leap(200);
     }
 
     //Задание 1
@@ -47,5 +47,14 @@ public class Introduction {
     //Задание 4
     public static void Str(String h_name){
         System.out.println("Привет, " + h_name);
+    }
+
+    //Задание 5
+    public static void Leap(int v){
+        if ((v % 4 == 0  && v % 100 != 0) || v % 400 == 0){
+            //(число делится без остатка на 4 И одновременно НЕ должно делиться без остатка на 100)
+            // ИЛИ число делится без остатка на 400
+            System.out.println("Год " + v + " високосный");
+        } else System.out.println("Год " + v + " НЕ високосный");
     }
 }
