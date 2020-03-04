@@ -15,6 +15,7 @@ package ru.geekbrains.homework_1;
 public class Introduction {
     public static void main (String[] args){
         System.out.println("Результат решения выражения a * (b + (c / d)) = " + Result(2,3,5,4));
+        System.out.println("Сумма данных двух чисел в пределах от 10 до 20? Ответ: " + Range(7,13));
     }
 
     //Задание 1
@@ -23,8 +24,12 @@ public class Introduction {
         //Поэтому использую здесь приведение типов к double, если так не надо было, то ниже написал сразу с нужным типом
 /*  public static double Result (double a, double b, double c, double d){
         return  a * (b + (c / d));*/
+    }
 
-
-
+    //Задание 2
+    public static boolean Range (int a, int b){
+        int res = a + b;
+        if (res>=10 && res<=20) return true;
+        else return false;
     }
 }
