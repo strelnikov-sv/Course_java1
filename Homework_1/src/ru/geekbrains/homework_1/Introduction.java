@@ -16,32 +16,25 @@ public class Introduction {
     public static void main (String[] args){
         System.out.println("Результат решения выражения a * (b + (c / d)) = " + Result(2,3,5,4));
         System.out.println("Сумма данных двух чисел в пределах от 10 до 20? Ответ: " + Range(7,13));
-        PosNeg(-3);
+        System.out.println(PosNeg(-3));
         Str("Sergey");
-        Leap(200);
+        System.out.println(Leap(200));
     }
 
     //Задание 1
     public static double Result (int a, int b, int c, int d){
-        return (double) a * ((double)b + ((double)c / (double)d)); // Исходя из задания понял, что a, b, c и d должны быть типа int
-        //Поэтому использую здесь приведение типов к double, если так не надо было, то ниже написал сразу с нужным типом
-/*  public static double Result (double a, double b, double c, double d){
-        return  a * (b + (c / d));*/
+        return a * (b + ((double)c / d));
     }
 
     //Задание 2
     public static boolean Range (int one, int two){
         int res = one + two;
-        if (res>=10 && res<=20) return true;
-        else return false;
+        return res>=10 && res<=20;
     }
 
     //Задание 3
-    public static void PosNeg(int num){
-        if (num>=0) {
-            System.out.println("Число " + num + " является положительным");
-        }
-        else System.out.println("Число " + num + " является отрицательным");
+    public static boolean PosNeg(int num){
+        return num>=0;
     }
 
     //Задание 4
@@ -50,11 +43,7 @@ public class Introduction {
     }
 
     //Задание 5
-    public static void Leap(int v){
-        if ((v % 4 == 0  && v % 100 != 0) || v % 400 == 0){
-            //(число делится без остатка на 4 И одновременно НЕ должно делиться без остатка на 100)
-            // ИЛИ число делится без остатка на 400
-            System.out.println("Год " + v + " високосный");
-        } else System.out.println("Год " + v + " НЕ високосный");
+    public static boolean Leap(int v){
+        return (v % 4 == 0  && v % 100 != 0) || v % 400 == 0;
     }
 }
