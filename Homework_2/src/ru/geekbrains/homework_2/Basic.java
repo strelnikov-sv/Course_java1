@@ -17,7 +17,9 @@ import java.util.Arrays;
 public class Basic {
     public static void main(String[] args){
         int [] arr = {1, 1, 0, 0, 1, 0, 1, 1, 0, 0};
+        int [] arr2 = new int[8];
         Mas01(arr);
+        Mas8(arr2);
     }
 
    /* 1 Задать целочисленный массив, состоящий из элементов 0 и 1.
@@ -25,6 +27,16 @@ public class Basic {
     public static void Mas01(int[] arr){
         for (int i=0; i<arr.length; i++){
             arr[i] = (arr[i]==0) ? 1 : 0; //if (arr[i]==0) arr[i]=1; else arr[i]=0;
+        }
+        System.out.println(Arrays.toString(arr));
+    }
+
+    /*2 Задать пустой целочисленный массив размером 8. Написать метод, который
+    c помощью цикла заполнит его значениями 1 4 7 10 13 16 19 22;*/
+    public static void Mas8(int[] arr){
+        arr[0] = 1;
+        for (int i=1; i<8; i++){
+            arr[i] = arr[i-1] + 3;
         }
         System.out.println(Arrays.toString(arr));
     }
