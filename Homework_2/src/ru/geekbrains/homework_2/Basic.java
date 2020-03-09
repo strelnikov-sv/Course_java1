@@ -1,23 +1,17 @@
 package ru.geekbrains.homework_2;
 
-/*
-        7 *** Написать метод, которому на вход подаётся одномерный массив и число n (может быть положительным, или отрицательным), при этом метод должен циклически сместить все элементы массива на n позиций.
-        8 **** Не пользоваться вспомогательным массивом при решении задачи 7.
-*/
-
 import java.lang.reflect.Array;
 import java.util.Arrays;
 
 public class Basic {
     public static void main(String[] args){
-        int [] arr = {1, 1, 0, 0, 1, 0, 1, 1, 0, 0};
-        int [] arr2 = new int[8];
-        int [] arr3 = {1, 5, 3, 2, 11, 4, 5, 2, 4, 8, 9, 1};
-        int [] arr4 = {1, 5, 3, 2, 11, 4, -1, 2, 4, 8, 9, 1};
-        int [][] arr5 = new int [5][5];
-        int [] arr6 = {1, 1, 1, 2, 1};
-        int [] arr7 = {2, 1, 1, 2, 1};
-        int [] arr8 = {10, 1, 2, 3, 4};
+        int[] arr = {1, 1, 0, 0, 1, 0, 1, 1, 0, 0};
+        int[] arr2 = new int[8];
+        int[] arr3 = {1, 5, 3, 2, 11, 4, 5, 2, 4, 8, 9, 1};
+        int[] arr4 = {1, 5, 3, 2, 11, 4, -1, 2, 4, 8, 9, 1};
+        int[][] arr5 = new int [5][5];
+        int[] arr6 = {1, 1, 1, 2, 1};
+        int[] arr7 = {10, 1, 2, 3, 4};
 
         Mas01(arr);
         Mas8(arr2);
@@ -25,6 +19,7 @@ public class Basic {
         MinMax(arr4);
         Square(arr5);
         System.out.println(CheckBalance(arr6));
+        Shift(arr7, -2);
     }
 
    /* 1 Задать целочисленный массив, состоящий из элементов 0 и 1.
@@ -96,5 +91,29 @@ public class Basic {
            if (a == b) break;
         }
         return a == b;
+    }
+
+    /*7 *** Написать метод, которому на вход подаётся одномерный массив и число n (может быть положительным,
+    или отрицательным), при этом метод должен циклически сместить все элементы массива на n позиций.
+    8 **** Не пользоваться вспомогательным массивом при решении задачи 7.*/
+    public static void Shift(int[] arr, int n){
+        if (n>0) {
+            for (int i = 0; i < n; i++) {
+                int copy = arr[0];
+                for (int j = 0; j < arr.length - 1; j++) {
+                    arr[j] = arr[j + 1];
+                }
+                arr[arr.length - 1] = copy;
+            }
+        } else{
+            for (int i = n; i < 0; i++) {
+                int copy = arr[arr.length - 1];
+                for (int j = arr.length - 1; j > 0; j--) {
+                    arr[j] = arr[j - 1];
+                }
+                arr[0] = copy;
+            }
+        }
+        System.out.println(Arrays.toString(arr));
     }
 }
