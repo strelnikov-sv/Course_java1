@@ -38,7 +38,7 @@ public class TicTacToe {
     }
 
     private static boolean isValidCell(int x, int y) {
-        return x >= 0 && x < fieldSizeX && y >=0 && y < fieldSizeY;
+        return x >= 0 && x < fieldSizeX && y >= 0 && y < fieldSizeY;
     }
 
     private static boolean isEmptyCell(int x, int y) {
@@ -77,16 +77,19 @@ public class TicTacToe {
     }
 
     private static boolean checkWin(char c) {
-        if (field[0][0] == c && field[0][1] == c && field[0][2] == c) return true;
-        if (field[1][0] == c && field[1][1] == c && field[1][2] == c) return true;
-        if (field[2][0] == c && field[2][1] == c && field[2][2] == c) return true;
-
-        if (field[0][0] == c && field[1][0] == c && field[2][0] == c) return true;
-        if (field[0][1] == c && field[1][1] == c && field[2][1] == c) return true;
-        if (field[0][2] == c && field[1][2] == c && field[2][2] == c) return true;
-
-        if (field[0][0] == c && field[1][1] == c && field[2][2] == c) return true;
-        if (field[0][2] == c && field[1][1] == c && field[2][0] == c) return true;
+        int counterH;
+        int counterV;
+        int counterD = 0;
+        for (int x = 0; x < fieldSizeX; x++) {
+            counterH = 0;
+            counterV = 0;
+            for (int y = 0; y < fieldSizeY; y++) {
+                if (field[x][y] == c) counterH += 1;
+                if (field[y][x] == c) counterV += 1;
+                if ((x == y || x == fieldSizeY - y - 1) & field[x][y] == c) counterD +=1;
+            }
+            if (counterH == fieldSizeX || counterV == fieldSizeX || counterD == fieldSizeX) return true;
+        }
         return false;
     }
 
