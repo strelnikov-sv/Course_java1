@@ -77,7 +77,23 @@ public class TicTacToe {
     }
 
     private static boolean checkWin(char c) {
-        // !!! очень неоптимальный код, и работает только при lengthLine = 4
+        // для 3x3
+        /*int counterH;
+        int counterV;
+        int counterD = 0;
+        for (int x = 0; x < fieldSizeX; x++) {
+            counterH = 0;
+            counterV = 0;
+            for (int y = 0; y < fieldSizeY; y++) {
+                if (field[x][y] == c) counterH += 1;
+                if (field[y][x] == c) counterV += 1;
+                if ((x == y || x == fieldSizeY - y - 1) & field[x][y] == c) counterD +=1;
+            }
+            if (counterH == fieldSizeX || counterV == fieldSizeX || counterD == fieldSizeX) return true;
+        }
+        return false;*/
+
+        // !!! очень неоптимальный код, но исправно работает для lengthLine = 4 и 5x5
         int lengthLine = 4; // длина количества символов
         int sum = -1;
         for (int i = 0; i < fieldSizeX; i++) {
@@ -87,7 +103,7 @@ public class TicTacToe {
         int counterH; // счетчик ячеек
         int summV;
         int counterV;
-        int summD1 = sum;
+        int summD1 = sum; // для 5x5 это 14
         int counterD1 = 0;
         int summD2 = sum;
         int counterD2 = 0;
