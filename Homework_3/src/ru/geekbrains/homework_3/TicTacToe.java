@@ -17,8 +17,8 @@ public class TicTacToe {
     private static final Random RANDOM = new Random();
 
     private static void initField() {
-        fieldSizeY = 3;
-        fieldSizeX = 3;
+        fieldSizeY = 5;
+        fieldSizeX = 5;
         field = new char[fieldSizeY][fieldSizeX];
         for (int y = 0; y < fieldSizeY; y++) {
             for (int x = 0; x < fieldSizeX; x++) {
@@ -77,18 +77,52 @@ public class TicTacToe {
     }
 
     private static boolean checkWin(char c) {
-        int counterH;
+        // !!! очень неоптимальный код, и работает только при lengthLine = 4
+        int lengthLine = 4; // длина количества символов
+        int sum = -1;
+        for (int i = 0; i < fieldSizeX; i++) {
+            sum += i + 1; // считаем общую сумму клеток
+        }
+        int summH; // сумма ячеек
+        int counterH; // счетчик ячеек
+        int summV;
         int counterV;
-        int counterD = 0;
+        int summD1 = sum;
+        int counterD1 = 0;
+        int summD2 = sum;
+        int counterD2 = 0;
         for (int x = 0; x < fieldSizeX; x++) {
+            summH = sum;
             counterH = 0;
+            for (int y = 0; y < fieldSizeY; y++) {
+                if (field[x][y] == c) {
+                    summH -= (y + 1); // вычитаем из общей суммы
+                    counterH += 1; // складываем, пока не дойдем до lengthLine
+                }
+                if (x == y && field[x][y] == c) {
+                    summD1 -= x + 1;
+                    counterD1 += 1;
+                }
+                if (x == fieldSizeY - y - 1 && field[x][y] == c) {
+                    summD2 -= x + 1;
+                    counterD2 += 1;
+                }
+                if ((summH == 0 || summH == 4) && counterH == lengthLine || (summD1 == 0 || summD1 == 4) && counterD1 == lengthLine || (summD2 == 0 || summD2 == 4) && counterD2 == lengthLine)
+                    return true; // сейчас условие привязано к lengthLine = 4, надо исправить
+                // проверяем карту на крайние значения
+            }
+        }
+        for (int x = 0; x < fieldSizeX; x++) {
+            summV = sum;
             counterV = 0;
             for (int y = 0; y < fieldSizeY; y++) {
-                if (field[x][y] == c) counterH += 1;
-                if (field[y][x] == c) counterV += 1;
-                if ((x == y || x == fieldSizeY - y - 1) & field[x][y] == c) counterD +=1;
+                if (field[y][x] == c) {
+                    summV -= y + 1;
+                    counterV += 1;
+                }
             }
-            if (counterH == fieldSizeX || counterV == fieldSizeX || counterD == fieldSizeX) return true;
+            if ((summV == 0 || summV == 4) && counterV == lengthLine)
+                return true;
         }
         return false;
     }
