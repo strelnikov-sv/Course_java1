@@ -29,16 +29,8 @@ public class Staff {
         this.age = age;
     }
 
-    public Staff(String name) {
-        this.name = name;
-        this.position = "ERROR";
-        this.salary = 1000000;
-        this.age = 99;
-    }
-
     public void salaryUp() {
         if (this.getAge() > 45)  this.salary = salary + 5000;
     }
-
 
 }

@@ -15,10 +15,8 @@ public class OOP {
 
     public static void main(String[] args) {
         Staff staff1 = new Staff("Str", "Prog", 50000, 23);
-        Staff staff2 = new Staff("QQQ");
 
         System.out.println("Фамилия: " + staff1.getName() + " Должность: " + staff1.getPosition());
-        System.out.println("Фамилия: " + staff2.getName() + " Должность: " + staff2.getPosition());
         System.out.println();
 
         Staff[] staffArray = new Staff[5];
@@ -39,7 +37,17 @@ public class OOP {
             if (staffArray[i].getAge() > 45)
                 System.out.println("Фамилия: " + staffArray[i].getName() + " Должность: " + staffArray[i].getPosition() + " Зарплата: " + staffArray[i].getSalary() + " Возраст: " + staffArray[i].getAge());
         }
+        System.out.println();
 
+        int age = 0;
+        int salary = 0;
+        for (int i = 0; i < staffArray.length; i++) {
+            age += staffArray[i].getAge();
+            salary += staffArray[i].getSalary();
+        }
+        int ageAv = age / staffArray.length;
+        int salaryAv = salary / staffArray.length;
+        System.out.println("Возраст: " + ageAv + " Зарплата: " + salaryAv);
     }
 
 }
