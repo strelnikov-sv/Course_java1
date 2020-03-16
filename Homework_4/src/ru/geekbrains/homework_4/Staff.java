@@ -35,4 +35,10 @@ public class Staff {
         this.salary = 1000000;
         this.age = 99;
     }
+
+    public void salaryUp() {
+        if (this.getAge() > 45)  this.salary = salary + 5000;
+    }
+
+
 }

@@ -14,24 +14,32 @@ package ru.geekbrains.homework_4;
 public class OOP {
 
     public static void main(String[] args) {
-        Staff stuff1 = new Staff("Str", "Prog", 50000, 23);
-        Staff stuff2 = new Staff("QQQ");
+        Staff staff1 = new Staff("Str", "Prog", 50000, 23);
+        Staff staff2 = new Staff("QQQ");
 
-        System.out.println("Фамилия: " + stuff1.getName() + " Должность: " + stuff1.getPosition());
-        System.out.println("Фамилия: " + stuff2.getName() + " Должность: " + stuff2.getPosition());
+        System.out.println("Фамилия: " + staff1.getName() + " Должность: " + staff1.getPosition());
+        System.out.println("Фамилия: " + staff2.getName() + " Должность: " + staff2.getPosition());
         System.out.println();
 
-        Staff[] stuffArray = new Staff[5];
-        stuffArray[0] = new Staff("Sergey", "Prog", 50000, 23);
-        stuffArray[1] = new Staff("Ivan", "Prog", 51000, 33);
-        stuffArray[2] = new Staff("Misha", "Prog", 10000, 43);
-        stuffArray[3] = new Staff("Bobuk", "Prog", 150000, 53);
-        stuffArray[4] = new Staff("Nik", "Prog", 5000, 13);
+        Staff[] staffArray = new Staff[5];
+        staffArray[0] = new Staff("Sergey", "Prog", 50000, 23);
+        staffArray[1] = new Staff("Ivan", "Prog", 51000, 33);
+        staffArray[2] = new Staff("Misha", "Prog", 10000, 43);
+        staffArray[3] = new Staff("Bobuk", "Prog", 100000, 53);
+        staffArray[4] = new Staff("Nik", "Prog", 5000, 13);
 
-        for (int i = 0; i < stuffArray.length; i++) {
-            if (stuffArray[i].getAge() > 40)
-                System.out.println("Фамилия: " + stuffArray[i].getName() + " Должность: " + stuffArray[i].getPosition() + " Зарплата: " + stuffArray[i].getSalary() + " Возраст: " + stuffArray[i].getAge());
+        for (int i = 0; i < staffArray.length; i++) {
+            if (staffArray[i].getAge() > 40)
+                System.out.println("Фамилия: " + staffArray[i].getName() + " Должность: " + staffArray[i].getPosition() + " Зарплата: " + staffArray[i].getSalary() + " Возраст: " + staffArray[i].getAge());
         }
+        System.out.println();
+
+        for (int i = 0; i < staffArray.length; i++) {
+            staffArray[i].salaryUp();
+            if (staffArray[i].getAge() > 45)
+                System.out.println("Фамилия: " + staffArray[i].getName() + " Должность: " + staffArray[i].getPosition() + " Зарплата: " + staffArray[i].getSalary() + " Возраст: " + staffArray[i].getAge());
+        }
+
     }
 
 }
