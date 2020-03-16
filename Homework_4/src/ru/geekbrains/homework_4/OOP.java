@@ -14,15 +14,11 @@ package ru.geekbrains.homework_4;
 public class OOP {
 
     public static void main(String[] args) {
-        Staff stuff1 = new Staff();
+        Staff stuff1 = new Staff("Str", "Prog", 50000, 23);
+        Staff stuff2 = new Staff("QQQ");
 
-/*        stuff1.name = "Str";
-        stuff1.position = "Prog";
-        stuff1.salary = 50000;
-        stuff1.age = 23;*/
-
-        System.out.println("Фамилия: " + stuff1.name + " Должность: " + stuff1.position + " Зарплата: " + stuff1.salary + " Возраст: " + stuff1.age);
-
+        System.out.println("Фамилия: " + stuff1.getName() + " Должность: " + stuff1.getPosition() + " Зарплата: " + stuff1.getSalary() + " Возраст: " + stuff1.getAge());
+        System.out.println("Фамилия: " + stuff2.getName() + " Должность: " + stuff2.getPosition() + " Зарплата: " + stuff2.getSalary() + " Возраст: " + stuff2.getAge());
     }
 
 }
