@@ -31,7 +31,7 @@ public class Staff {
 
     public Staff(String name) {
         this.name = name;
-        this.position = "??";
+        this.position = "ERROR";
         this.salary = 1000000;
         this.age = 99;
     }

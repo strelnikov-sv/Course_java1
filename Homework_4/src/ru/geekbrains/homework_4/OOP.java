@@ -17,8 +17,21 @@ public class OOP {
         Staff stuff1 = new Staff("Str", "Prog", 50000, 23);
         Staff stuff2 = new Staff("QQQ");
 
-        System.out.println("Фамилия: " + stuff1.getName() + " Должность: " + stuff1.getPosition() + " Зарплата: " + stuff1.getSalary() + " Возраст: " + stuff1.getAge());
-        System.out.println("Фамилия: " + stuff2.getName() + " Должность: " + stuff2.getPosition() + " Зарплата: " + stuff2.getSalary() + " Возраст: " + stuff2.getAge());
+        System.out.println("Фамилия: " + stuff1.getName() + " Должность: " + stuff1.getPosition());
+        System.out.println("Фамилия: " + stuff2.getName() + " Должность: " + stuff2.getPosition());
+        System.out.println();
+
+        Staff[] stuffArray = new Staff[5];
+        stuffArray[0] = new Staff("Sergey", "Prog", 50000, 23);
+        stuffArray[1] = new Staff("Ivan", "Prog", 51000, 33);
+        stuffArray[2] = new Staff("Misha", "Prog", 10000, 43);
+        stuffArray[3] = new Staff("Bobuk", "Prog", 150000, 53);
+        stuffArray[4] = new Staff("Nik", "Prog", 5000, 13);
+
+        for (int i = 0; i < stuffArray.length; i++) {
+            if (stuffArray[i].getAge() > 40)
+                System.out.println("Фамилия: " + stuffArray[i].getName() + " Должность: " + stuffArray[i].getPosition() + " Зарплата: " + stuffArray[i].getSalary() + " Возраст: " + stuffArray[i].getAge());
+        }
     }
 
 }
