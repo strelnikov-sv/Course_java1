@@ -5,4 +5,11 @@ public class Staff {
     int salary;
     String position;
     int age;
+
+    public Staff(){
+        name = "Str";
+        position = "Prog";
+        salary = 50000;
+        age = 23;
+    }
 }
