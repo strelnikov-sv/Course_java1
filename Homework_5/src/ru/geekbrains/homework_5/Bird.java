@@ -1,4 +1,4 @@
 package ru.geekbrains.homework_5;
 
-public class Bird {
+public class Bird extends Animal {
 }
