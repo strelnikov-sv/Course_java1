@@ -17,6 +17,17 @@ package ru.geekbrains.homework_5;
         может быть 400 м., у другой 600 м.*/
 
 public class Main {
+    public static void main(String[] args) {
+        Cat c = new Cat();
+        Dog d = new Dog();
+        Bird b = new Bird();
+        Horse h = new Horse();
 
-
+        Animal[] zoo = {c, d, b, h};
+        for (int i = 0; i < zoo.length; i++) {
+            zoo[i].run(10);
+            zoo[i].swim(10);
+            zoo[i].jump(10);
+        }
+    }
 }

@@ -2,15 +2,19 @@ package ru.geekbrains.homework_5;
 
 public class Animal {
 
-    public void run() {
+    int length;
+    int height;
 
+    public int run(int length) {
+        this.length = length;
+        return length;
     }
 
-    public void swim() {
-
+    public void swim(int length) {
+        this.length = length;
     }
 
-    public void jump() {
-
+    public void jump(int height) {
+        this.height = height;
     }
 }
