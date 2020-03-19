@@ -2,6 +2,14 @@ package ru.geekbrains.homework_5;
 
 public class Animal {
 
+    int lengthMaxRun;
+    double heightMaxJump;
+
+    public Animal (int lengthMaxRun, double heightMaxJump) {
+        this.lengthMaxRun = lengthMaxRun;
+        this.heightMaxJump = heightMaxJump;
+    }
+
     int length;
     int height;
 

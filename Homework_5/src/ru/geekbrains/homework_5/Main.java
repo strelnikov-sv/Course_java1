@@ -18,10 +18,10 @@ package ru.geekbrains.homework_5;
 
 public class Main {
     public static void main(String[] args) {
-        Cat c = new Cat();
-        Dog d = new Dog();
-        Bird b = new Bird();
-        Horse h = new Horse();
+        Cat c = new Cat(200,2);
+        Dog d = new Dog(500,0.5, 10);
+        Bird b = new Bird(20,0.2);
+        Horse h = new Horse(1500,3, 100);
 
         Animal[] zoo = {c, d, b, h};
         for (int i = 0; i < zoo.length; i++) {
