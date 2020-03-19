@@ -5,24 +5,20 @@ public class Animal {
     int lengthMaxRun;
     double heightMaxJump;
 
-    public Animal (int lengthMaxRun, double heightMaxJump) {
+    public Animal(int lengthMaxRun, double heightMaxJump) {
         this.lengthMaxRun = lengthMaxRun;
         this.heightMaxJump = heightMaxJump;
     }
 
     int length;
-    int height;
+    double height;
 
-    public int run(int length) {
-        this.length = length;
-        return length;
-    }
-
-    public void swim(int length) {
+    public void run(int length) {
         this.length = length;
     }
 
-    public void jump(int height) {
+
+    public void jump(double height) {
         this.height = height;
     }
 }

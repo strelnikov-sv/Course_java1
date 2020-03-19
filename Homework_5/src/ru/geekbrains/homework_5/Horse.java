@@ -1,11 +1,8 @@
 package ru.geekbrains.homework_5;
 
-public class Horse extends Animal {
+public class Horse extends Swim_Animal {
 
-    int lengthMaxSwim;
-
-    public Horse (int lengthMaxRun, double heightMaxJump, int lengthMaxSwim) {
-        super(lengthMaxRun, heightMaxJump);
-        this.lengthMaxSwim =lengthMaxSwim;
+    public Horse(int lengthMaxRun, double heightMaxJump, int lengthMaxSwim) {
+        super(lengthMaxRun, heightMaxJump, lengthMaxSwim);
     }
 }

@@ -6,8 +6,4 @@ public class Bird extends Animal {
         super(lengthMaxRun, heightMaxJump);
     }
 
-    public int run(int length) {
-        this.length = length;
-        return length;
-    }
 }

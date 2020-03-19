@@ -11,23 +11,40 @@ package ru.geekbrains.homework_5;
         плавание: кот и птица не умеет плавать, собака 10 м., лошадь 100 м.).
 
         При попытке животного выполнить одно из этих действий, оно должно сообщить результат.
-        (Например, dog1.run(150); -> результат: 'Пёсик пробежал!')
-
-        Добавить животным разброс в ограничениях. То есть у одной собаки ограничение на бег
-        может быть 400 м., у другой 600 м.*/
+        (Например, dog1.run(150); -> результат: 'Пёсик пробежал!').*/
 
 public class Main {
     public static void main(String[] args) {
-        Cat c = new Cat(200,2);
-        Dog d = new Dog(500,0.5, 10);
-        Bird b = new Bird(20,0.2);
-        Horse h = new Horse(1500,3, 100);
+        Cat c = new Cat(200, 2);
+        Dog d = new Dog(500, 0.5, 10);
+        Bird b = new Bird(20, 0.2);
+        Horse h = new Horse(1500, 3, 100);
+
+        c.run(300); // не пробежал
+        d.run(300); // пробежал
+        b.run(300); // не пробежал
+        h.run(300); // пробежал
+        c.jump(1); // прыгнул
+        d.jump(1); // не прыгнул
+        b.jump(0.1); // прыгнул
+        h.jump(1); // прыгнул
+        d.swim(15); // не проплавал
+        h.swim(15); // проплавал
 
         Animal[] zoo = {c, d, b, h};
         for (int i = 0; i < zoo.length; i++) {
-            zoo[i].run(10);
-            zoo[i].swim(10);
-            zoo[i].jump(10);
+            if (zoo[i].length < zoo[i].lengthMaxRun) {
+                System.out.println(zoo[i].getClass().getName() + " пробежал");
+            } else System.out.println(zoo[i].getClass().getName() + " НЕ пробежал");
+            if (zoo[i].height < zoo[i].heightMaxJump) {
+                System.out.println(zoo[i].getClass().getName() + " прыгнул");
+            } else System.out.println(zoo[i].getClass().getName() + " НЕ прыгнул");
+            if (zoo[i] instanceof Swim_Animal) {
+                if (zoo[i].length < ((Swim_Animal) zoo[i]).lengthMaxSwim) {
+                    System.out.println(zoo[i].getClass().getName() + " проплавал");
+                } else System.out.println(zoo[i].getClass().getName() + " НЕ проплавал");
+            }
         }
+
     }
 }
