@@ -5,9 +5,6 @@ import java.util.Scanner;
 
 public class Text {
 
-
-    /* ** Написать метод, проверяющий, есть ли указанное слово в папке*/
-
     public static void main(String[] args) throws IOException {
 
         //Создать 2 текстовых файла, примерно по 50-100 символов в каждом(особого значения не имеет);
@@ -24,6 +21,10 @@ public class Text {
         Scanner scan = new Scanner(System.in);
         String word = scan.nextLine();
         System.out.println(find(file3, word));
+
+        System.out.println("Find word in a directory: ");
+        word = scan.nextLine();
+        System.out.println(findFolder(file3, word));
     }
 
     //Написать программу, «склеивающую» эти файлы, то есть вначале идет текст из первого файла, потом текст из второго.
@@ -41,18 +42,31 @@ public class Text {
 
     //* Написать программу, которая проверяет присутствует ли указанное пользователем слово в файле (работаем только с латиницей).
     public static boolean find(String file, String word) throws FileNotFoundException {
-        Scanner sc = new Scanner(new FileInputStream(file));
+        Scanner fileNew = new Scanner(new FileInputStream(file));
         String wordNew;
-        while (sc.hasNext()) {
-            wordNew = sc.next();
+        while (fileNew.hasNext()) {
+            wordNew = fileNew.next();
             if (wordNew.equals(word)) {
                 return true;
             }
         }
 
-        sc.close();
+        fileNew.close();
         return false;
     }
 
-
+    //** Написать метод, проверяющий, есть ли указанное слово в папке
+    //НЕ ДОДЕЛАНО
+    private static boolean findFolder (String file, String word) throws IOException{
+        File fileNew = new File(file);
+        String[] fileArray = fileNew.list(); // превращаем все слова в файле в элементы массива
+        for (int i = 0; i < fileArray.length; i++) {
+            fileArray = new File(fileArray[i]); // неверно с типами?
+            // идея около такой:
+            if (fileArray.isFile()) {
+                if (find(fileArray[i], word)) return true;
+            }
+        }
+        return false;
+    }
 }
