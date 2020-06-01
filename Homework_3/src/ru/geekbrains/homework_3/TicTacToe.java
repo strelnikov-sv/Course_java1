@@ -17,8 +17,8 @@ public class TicTacToe {
     private static final Random RANDOM = new Random();
 
     private static void initField() {
-        fieldSizeY = 3;
-        fieldSizeX = 3;
+        fieldSizeY = 5;
+        fieldSizeX = 5;
         field = new char[fieldSizeY][fieldSizeX];
         for (int y = 0; y < fieldSizeY; y++) {
             for (int x = 0; x < fieldSizeX; x++) {
@@ -38,7 +38,7 @@ public class TicTacToe {
     }
 
     private static boolean isValidCell(int x, int y) {
-        return x >= 0 && x < fieldSizeX && y >=0 && y < fieldSizeY;
+        return x >= 0 && x < fieldSizeX && y >= 0 && y < fieldSizeY;
     }
 
     private static boolean isEmptyCell(int x, int y) {
@@ -77,16 +77,69 @@ public class TicTacToe {
     }
 
     private static boolean checkWin(char c) {
-        if (field[0][0] == c && field[0][1] == c && field[0][2] == c) return true;
-        if (field[1][0] == c && field[1][1] == c && field[1][2] == c) return true;
-        if (field[2][0] == c && field[2][1] == c && field[2][2] == c) return true;
+        // для 3x3
+        /*int counterH;
+        int counterV;
+        int counterD = 0;
+        for (int x = 0; x < fieldSizeX; x++) {
+            counterH = 0;
+            counterV = 0;
+            for (int y = 0; y < fieldSizeY; y++) {
+                if (field[x][y] == c) counterH += 1;
+                if (field[y][x] == c) counterV += 1;
+                if ((x == y || x == fieldSizeY - y - 1) & field[x][y] == c) counterD +=1;
+            }
+            if (counterH == fieldSizeX || counterV == fieldSizeX || counterD == fieldSizeX) return true;
+        }
+        return false;*/
 
-        if (field[0][0] == c && field[1][0] == c && field[2][0] == c) return true;
-        if (field[0][1] == c && field[1][1] == c && field[2][1] == c) return true;
-        if (field[0][2] == c && field[1][2] == c && field[2][2] == c) return true;
-
-        if (field[0][0] == c && field[1][1] == c && field[2][2] == c) return true;
-        if (field[0][2] == c && field[1][1] == c && field[2][0] == c) return true;
+        // !!! очень неоптимальный код, но исправно работает для lengthLine = 4 и 5x5
+        int lengthLine = 4; // длина количества символов
+        int sum = -1;
+        for (int i = 0; i < fieldSizeX; i++) {
+            sum += i + 1; // считаем общую сумму клеток
+        }
+        int summH; // сумма ячеек
+        int counterH; // счетчик ячеек
+        int summV;
+        int counterV;
+        int summD1 = sum; // для 5x5 это 14
+        int counterD1 = 0;
+        int summD2 = sum;
+        int counterD2 = 0;
+        for (int x = 0; x < fieldSizeX; x++) {
+            summH = sum;
+            counterH = 0;
+            for (int y = 0; y < fieldSizeY; y++) {
+                if (field[x][y] == c) {
+                    summH -= (y + 1); // вычитаем из общей суммы
+                    counterH += 1; // складываем, пока не дойдем до lengthLine
+                }
+                if (x == y && field[x][y] == c) {
+                    summD1 -= x + 1;
+                    counterD1 += 1;
+                }
+                if (x == fieldSizeY - y - 1 && field[x][y] == c) {
+                    summD2 -= x + 1;
+                    counterD2 += 1;
+                }
+                if ((summH == 0 || summH == 4) && counterH == lengthLine || (summD1 == 0 || summD1 == 4) && counterD1 == lengthLine || (summD2 == 0 || summD2 == 4) && counterD2 == lengthLine)
+                    return true; // сейчас условие привязано к lengthLine = 4, надо исправить
+                // проверяем карту на крайние значения
+            }
+        }
+        for (int x = 0; x < fieldSizeX; x++) {
+            summV = sum;
+            counterV = 0;
+            for (int y = 0; y < fieldSizeY; y++) {
+                if (field[y][x] == c) {
+                    summV -= y + 1;
+                    counterV += 1;
+                }
+            }
+            if ((summV == 0 || summV == 4) && counterV == lengthLine)
+                return true;
+        }
         return false;
     }
 
